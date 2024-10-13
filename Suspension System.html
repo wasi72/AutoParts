@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Mechanic - Suspension System</title>
+        <link rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+            crossorigin="anonymous">
+        <link rel="shortcut icon"
+            href="data:image/png;base64,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"
+            type="image/x-icon">
+        <link rel="stylesheet" href="Car Brakes.css">
+        <link rel="stylesheet" href="Navbar.css">
+</head>
+<body>
+    <div class="share-sidebar">
+        <!-- X (formerly Twitter) -->
+        <a href="#" target="_blank" class="bi bi-twitter-x"></a>
+        <!-- LinkedIn -->
+        <a href="#" target="_blank" class="bi bi-linkedin"></a>
+        <!-- Facebook -->
+        <a href="#" target="_blank" class="bi bi-facebook"></a>
+        <!-- Share Label -->
+        <span class="share-label">Share</span>
+    </div>
+
+    <header>
+        <div class="left-section">
+            <a href="About.html">About us</a>
+            <a href="Terms of Service.html">Terms of service</a>
+            <a href="FAQ.html">FAQ</a>
+            <a href="Terms of Service.html">Privacy policy</a>
+        </div>
+        <div class="center-section">
+            <p>Now offering free shipping on all orders over $50!</p>
+        </div>
+        <div class="right-section">
+            <select>
+                <option>English</option>
+                <option>Urdu</option>
+                <option>Spanish</option>
+                <option>France</option>
+            </select>
+            <span>|</span>
+            <div class="flag">
+                <img src="https://flagcdn.com/us.svg" alt="USA Flag"
+                    width="20px">
+                <select>
+                    <option>United States (USD $)</option>
+                    <option>Canada (CAD $)</option>
+                    <option>United Kingdom (GBP £)</option>
+                    <option>European Union (EUR €)</option>
+                    <option>Australia (AUD $)</option>
+                    <option>Japan (JPY ¥)</option>
+                    <option>India (INR ₹)</option>
+                    <option>Switzerland (CHF Fr)</option>
+                    <option>China (CNY ¥)</option>
+                    <option>Mexico (MXN $)</option>
+                </select>
+            </div>
+        </div>
+    </header>
+
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <!-- Logo Section -->
+            <a class="navbar-brand d-flex align-items-center"
+                href="index.html">
+                <img
+                    src="https://meka-auto-parts-demo.myshopify.com/cdn/shop/files/AUTOPARTS.svg?v=1697022088&width=190"
+                    alt="Logo" class="me-2" style="width: 200px;">
+            </a>
+
+            <!-- Toggler for mobile -->
+            <button class="navbar-toggler" type="button"
+                data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Navbar Links with Images -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul
+                    class="navbar-nav me-auto mb-2 mb-lg-0 align-items-center">
+                    <li class="nav-item dropdown text-center">
+                        <a class="nav-link dropdown-toggle" href="#"
+                            id="catalogLink" role="button">
+                            <img
+                                src="https://meka-auto-parts-demo.myshopify.com/cdn/shop/files/category.svg?v=1722416712&width=22"
+                                alt="Catalog">
+                            <p>Catalog</p>
+                        </a>
+                    </li>
+
+                    <!-- Main Modal -->
+                    <div id="catalogModal" class="modal-slide">
+                        <div class="modal-content">
+                            <button id="closeModal"
+                                class="close-btn">&times;</button>
+                            <a href="index.html"><img
+                                    src="https://meka-auto-parts-demo.myshopify.com/cdn/shop/files/AUTOPARTS.svg?v=1697022088&width=190"
+                                    alt="Logo" class="me-2"
+                                    style="width: 200px;"></a>
+                            <ul>
+                                <li><a href="#"
+                                        id="automobilePartsBtn">Automobile
+                                        Parts <i
+                                            class="bi bi-arrow-right"></i></a></li>
+                                <li><a href="#"
+                                        id="performancePartsBtn">Performance
+                                        Parts <i
+                                            class="bi bi-arrow-right"></i></a></li>
+                                <li><a href="#" id="bodyPartsBtn">Body Parts
+                                        <i
+                                            class="bi bi-arrow-right"></i></a></li>
+                                <li><a href="#"
+                                        id="electronicsBtn">Electronics <i
+                                            class="bi bi-arrow-right"></i></a></li>
+                                <li><a href="#">Wheels and Tires</a></li>
+                                <li><a href="Our Collection.html">All Collections</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Submenu Modal (Automobile Parts) -->
+                    <div id="automobilePartsModal"
+                        class="modal-slide submenu-slide">
+                        <div class="modal-content">
+                            <button id="closeModal"
+                                class="close-btn">&times;</button>
+                            <a href="index.html">
+                                <img
+                                    src="https://meka-auto-parts-demo.myshopify.com/cdn/shop/files/AUTOPARTS.svg?v=1697022088&width=190"
+                                    alt="Logo" class="me-2"
+                                    style="width: 200px;">
+                            </a>
+                            <button id="backToMainModalAutomobile"
+                                class="back-btn">&#x2190; Automobile
+                                parts</button>
+                            <ul>
+                                <li><a href="Engine Parts.html">Engine Parts</a></li>
+                                <li><a href="Car Brakes.html">Brake System</a></li>
+                                <li><a href="Cooling System.html">Cooling System</a></li>
+                                <li><a href="Exhaust System.html">Exhaust System</a></li>
+                                <li><a href="Suspension System.html">Suspension System</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Submenu Modal (Performance Parts) -->
+                    <div id="performancePartsModal"
+                        class="modal-slide submenu-slide">
+                        <div class="modal-content">
+                            <button id="closeModal"
+                                class="close-btn">&times;</button>
+                            <a href="index.html">
+                                <img
+                                    src="https://meka-auto-parts-demo.myshopify.com/cdn/shop/files/AUTOPARTS.svg?v=1697022088&width=190"
+                                    alt="Logo" class="me-2"
+                                    style="width: 200px;">
+                            </a>
+                            <button id="backToMainModalPerformance"
+                                class="back-btn">&#x2190; Performance
+                                parts</button>
+                            <ul>
+                                <li><a href="Air Intake.html">Air Intake Products</a></li>
+                                <li><a href="Engine Tuning.html">Engine Tuning</a></li>
+                                <li><a href="Exhaust Upgrades.html">Exhaust Upgrades</a></li>
+                                <li><a href="Performance Brakes.html">Performance Brakes</a></li>
+                                <li><a href="Suspension Upgrades.html">Suspension Upgrades</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Submenu Modal (Body Parts) -->
+                    <div id="bodyPartsModal"
+                        class="modal-slide submenu-slide">
+                        <div class="modal-content">
+                            <button id="closeModal"
+                                class="close-btn">&times;</button>
+                            <a href="index.html">
+                                <img
+                                    src="https://meka-auto-parts-demo.myshopify.com/cdn/shop/files/AUTOPARTS.svg?v=1697022088&width=190"
+                                    alt="Logo" class="me-2"
+                                    style="width: 200px;">
+                            </a>
+                            <button id="backToMainModalBody"
+                                class="back-btn">&#x2190; Body
+                                parts</button>
+                            <ul>
+                                <li><a href="Interior Accessories.html">Interior
+                                        Accessories</a></li>
+                                <li><a href="Exterior Accessories.html">Exterior
+                                        Accessories</a></li>
+                                <li><a href="Lighting.html">Lighting</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Submenu Modal (Electronics) -->
+                    <div id="electronicsModal"
+                        class="modal-slide submenu-slide">
+                        <div class="modal-content">
+                            <button id="closeModal"
+                                class="close-btn">&times;</button>
+                            <a href="index.html">
+                                <img
+                                    src="https://meka-auto-parts-demo.myshopify.com/cdn/shop/files/AUTOPARTS.svg?v=1697022088&width=190"
+                                    alt="Logo" class="me-2"
+                                    style="width: 200px;">
+                            </a>
+                            <button id="backToMainModalElectronics"
+                                class="back-btn">&#x2190;
+                                Electronics</button>
+                            <ul>
+                                <li><a href="Car Audio Systems.html">Car Audio Systems</a></li>
+                                <li><a href="Electrical Components.html">Electrical
+                                        Components</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Modal Overlay for blur effect -->
+                    <div id="modalOverlay" class="modal-overlay"></div>
+
+                    <li class="nav-item text-center">
+                        <a class="nav-link" href="About.html">
+                            <img
+                                src="https://meka-auto-parts-demo.myshopify.com/cdn/shop/files/shopping-bag.svg?v=1722416782&width=24"
+                                alt="About Us">
+                            <p>About Us</p>
+                        </a>
+                    </li>
+                    <li class="nav-item text-center">
+                        <a class="nav-link" href="Blog.html">
+                            <img
+                                src="https://meka-auto-parts-demo.myshopify.com/cdn/shop/files/message-text_dd3e52d2-5a94-4bfa-acc9-7532a4fd5569.svg?v=1722416810&width=23"
+                                alt="Blog">
+                            <p>Blog</p>
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown text-center">
+                        <a class="nav-link dropdown-toggle" href="#"
+                            id="navbarDropdownHelp" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <img
+                                src="https://meka-auto-parts-demo.myshopify.com/cdn/shop/files/icon-help.svg?v=1722416835&width=22"
+                                alt="Help">
+                            <p>Help</p>
+                        </a>
+                        <ul class="dropdown-menu"
+                            aria-labelledby="navbarDropdownHelp">
+                            <li><a class="dropdown-item"
+                                    href="FAQ.html">FAQ</a></li>
+                            <li><a class="dropdown-item" href="Terms of Service.html">Terms of
+                                    Service</a></li>
+                            <li><a class="dropdown-item" href="Shipping & Return Policy.html">Shipping
+                                    Information</a></li>
+                            <li><a class="dropdown-item" href="Delivery Policy.html">Delivery
+                                    Policy</a></li>
+                            <li><a class="dropdown-item" href="Returns & Exchanges.html">Return &
+                                    Exchange</a></li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <!-- Search Form -->
+                <form class="d-flex search-form">
+                    <input class="form-control" type="search"
+                        placeholder="Search" aria-label="Search">
+                    <button class="btn btn-orange org" type="submit">
+                        <i class="bi bi-search"></i>
+                    </button>
+                </form>
+
+                <!-- User & Cart Icons -->
+                <div class="navbar-icons ms-3">
+                    <a href="Login.html" class="me-3"><i
+                            class="bi bi-person"></i></a>
+                    <a href="Our Collection.html"><i class="bi bi-cart"></i></a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+
+    <main class="div1">
+        <h6><a href="index.html">Home</a> <i
+                class="bi bi-caret-right"></i>Suspension System</h6>
+        <h1>Suspension System</h1>
+        <p>Enhance handling and comfort with high-quality shocks, struts, sway bars, and lowering kits.</p>
+    </main>
+
+
+    <section class="div2">
+        <div class="filter-sort-container">
+            <button class="filter-btn"><i class="bi bi-filter"></i> Filter</button>
+            <div class="sort-container">
+                <span>Sort by</span>
+                <select class="sort-select">
+                    <option value="best-selling">Best selling</option>
+                    <option value="price-low-high">Price: Low to High</option>
+                    <option value="price-high-low">Price: High to Low</option>
+                    <option value="new-arrivals">New Arrivals</option>
+                </select>
+            </div>
+        </div>
+        
+        <div class="custom-tab-content active">
+            <div class="custom-card">
+                <div class="img-container">
+                    <img
+                        src="https://meka-auto-parts-demo.myshopify.com/cdn/shop/files/Alternators-1.png?v=1719398219&width=600"
+                        alt="Air Filters" class="product-img default">
+                    <img
+                        src="https://meka-auto-parts-demo.myshopify.com/cdn/shop/files/Alternators.png?v=1719398219&width=600"
+                        alt="Air Filters Hover" class="product-img hover">
+                </div>
+                <a href="#"><h3>Synchronous Generator</h3></a>
+                <p>$800.00</p>
+                <label><input type="checkbox"> Add to compare</label>
+                <button class="btn">Add to Cart</button>
+            </div>
+        
+            <div class="custom-card">
+                <div class="img-container">
+                    <img src="https://meka-auto-parts-demo.myshopify.com/cdn/shop/files/airfilter1.png?v=1716291611&width=713" alt="Air Filters" class="product-img default">
+                    <img src="https://meka-auto-parts-demo.myshopify.com/cdn/shop/files/airfilter1a.png?v=1716291611&width=713" alt="Air Filters Hover" class="product-img hover">
+                </div>
+                <a href="#"><h3>Air Filters</h3></a>
+                <p><del>$45.00</del> <strong>$40.00</strong></p>
+                <label><input type="checkbox"> Add to compare</label>
+                <button class="btn">Add to Cart</button>
+            </div>
+        
+            <div class="custom-card">
+                <div class="img-container">
+                    <img src="https://meka-auto-parts-demo.myshopify.com/cdn/shop/files/controlarms1.png?v=1716297629&width=713" alt="Control Arm" class="product-img default">
+                    <img src="https://meka-auto-parts-demo.myshopify.com/cdn/shop/files/controlarms1a.png?v=1716297629&width=713" alt="Control Arm Hover" class="product-img hover">
+                </div>
+                <a href="#"><h3>Control Arms</h3></a>
+                <p>$35.00</p>
+                <label><input type="checkbox"> Add to compare</label>
+                <button class="btn">Add to Cart</button>
+            </div>
+            <div class="custom-card">
+                <div class="img-container">
+                    <img src="https://meka-auto-parts-demo.myshopify.com/cdn/shop/files/Starters1_1b947379-7843-46c9-8c08-6d1c9f04a50e.png?v=1719398128&width=713" alt="Control Arm" class="product-img default">
+                    <img src="https://meka-auto-parts-demo.myshopify.com/cdn/shop/files/Starters1a.png?v=1719398129&width=713" alt="Control Arm Hover" class="product-img hover">
+                </div>
+                <a href="#"><h3>Alternators</h3></a>
+                <p>$800.00</p>
+                <label><input type="checkbox"> Add to compare</label>
+                <button class="btn">Add to Cart</button>
+            </div>
+            <div class="custom-card">
+                <div class="img-container">
+                    <img src="https://meka-auto-parts-demo.myshopify.com/cdn/shop/files/Coiloverkits.png?v=1716374522&width=713" alt="Control Arm" class="product-img default">
+                    <img src="https://meka-auto-parts-demo.myshopify.com/cdn/shop/files/Coiloverkits1a.png?v=1716374522&width=713" alt="Control Arm Hover" class="product-img hover">
+                </div>
+                <a href="#"><h3>Coilover Kits</h3></a>
+                <p>$40.00</p>
+                <label><input type="checkbox"> Add to compare</label>
+                <button class="btn">Add to Cart</button>
+            </div>
+            <div class="custom-card">
+                <div class="img-container">
+                    <img src="https://meka-auto-parts-demo.myshopify.com/cdn/shop/files/BrakeLines.png?v=1716379210&width=713" alt="Control Arm" class="product-img default">
+                    <img src="https://meka-auto-parts-demo.myshopify.com/cdn/shop/files/BrakeLines.png?v=1716379210&width=713" alt="Control Arm Hover" class="product-img hover">
+                </div>
+                <a href="#"><h3>Brake Line</h3></a>
+                <p>$300.00</p>
+                <label><input type="checkbox"> Add to compare</label>
+                <button class="btn">Add to Cart</button>
+            </div>
+            <div class="custom-card">
+                <div class="img-container">
+                    <img src="https://meka-auto-parts-demo.myshopify.com/cdn/shop/files/BrakeCalipers1a.png?v=1716378610&width=713" alt="Control Arm" class="product-img default">
+                    <img src="https://meka-auto-parts-demo.myshopify.com/cdn/shop/files/BrakeCalipers1b.png?v=1716378610&width=713" alt="Control Arm Hover" class="product-img hover">
+                </div>
+                <a href="#"><h3>Brake Callipers</h3></a>
+                <p>$200.00</p>
+                <label><input type="checkbox"> Add to compare</label>
+                <button class="btn">Add to Cart</button>
+            </div>
+            <div class="custom-card">
+                <div class="img-container">
+                    <img src="https://meka-auto-parts-demo.myshopify.com/cdn/shop/files/AirFilters.png?v=1716371764&width=713" alt="Control Arm" class="product-img default">
+                    <img src="https://meka-auto-parts-demo.myshopify.com/cdn/shop/files/AirFilters1a.png?v=1716371764&width=713" alt="Control Arm Hover" class="product-img hover">
+                </div>
+                <a href="#"><h3>Air Filters</h3></a>
+                <p>$10,000.00</p>
+                <label><input type="checkbox"> Add to compare</label>
+                <button class="btn">Add to Cart</button>
+            </div>
+        </div>
+        
+        <div class="pagination">
+            <a href="#" class="prev">Prev</a>
+            <a href="#" class="page active">1</a>
+            <a href="#" class="page">2</a>
+            <a href="#" class="next">Next</a>
+        </div>
+        
+    
+        <div class="main-pic1">
+            <h1>Save up to 50%</h1>
+            <p>Explore our items on sale and get upto 50% off on!</p>
+            <button>Shop Now</button>
+        </div>
+    </section>
+
+
+    <div class="container-box">
+        <div class="faq-section">
+            <h2>FAQs</h2>
+            <a href="FAQ.html"><button class="see-all-btn">See All</button></a>
+            <div class="faq-item">
+                <h3 class="faq-question">What payment methods can I use?</h3>
+                <p class="faq-answer">We offer 35 different payment methods including major providers like Mastercard, Visa, PayPal, American Express and Diners as well as many different local payment methods including Klarna, iDEAL, AliPay, Sofort, giropay and more.</p>
+            </div>
+            <div class="faq-item">
+                <h3 class="faq-question">Are the autoparts on your website genuine?</h3>
+                <p class="faq-answer">We offer 35 different payment methods including major providers like Mastercard, Visa, PayPal, American Express and Diners as well as many different local payment methods including Klarna, iDEAL, AliPay, Sofort, giropay and more.</p>
+            </div>
+            <div class="faq-item">
+                <h3 class="faq-question">Do you offer warranties on your autoparts?</h3>
+                <p class="faq-answer">We offer 35 different payment methods including major providers like Mastercard, Visa, PayPal, American Express and Diners as well as many different local payment methods including Klarna, iDEAL, AliPay, Sofort, giropay and more.</p>
+            </div>
+            <div class="faq-item">
+                <h3 class="faq-question">Do you offer e-gift cards for international customers?</h3>
+                <p class="faq-answer">We offer 35 different payment methods including major providers like Mastercard, Visa, PayPal, American Express and Diners as well as many different local payment methods including Klarna, iDEAL, AliPay, Sofort, giropay and more.</p>
+            </div>
+            <div class="faq-item">
+                <h3 class="faq-question">How can I ensure that I'm purchasing the correct part?</h3>
+                <p class="faq-answer">We offer 35 different payment methods including major providers like Mastercard, Visa, PayPal, American Express and Diners as well as many different local payment methods including Klarna, iDEAL, AliPay, Sofort, giropay and more.</p>
+            </div>
+        </div>
+        
+        <div class="review-section">
+            <h2>Customer Reviews</h2>
+            <div class="review-stars">★★★★★</div>
+            <p class="review-text">Needed some replacement brake pads for my daily driver. The website was easy to navigate, and I found exactly what I needed at a competitive price. Delivery was quick, and the parts fit perfectly. Would recommend for basic maintenance needs.</p>
+            <div class="reviewer-info">
+                <img src="https://meka-auto-parts-demo.myshopify.com/cdn/shop/files/shutterstock_289427012_1_819e0075-453e-41d8-a5b7-bc2887f6630a.jpg?v=1711984383&width=80" alt="Reviewer Image" class="reviewer-image">
+                <div class="reviewer-details">
+                    <p class="reviewer-name">Emma Johnson</p>
+                    <p class="reviewer-position">CCO at Happy Money</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="div3">
+        <p>AutoParts carries a vast selection of high-quality replacement parts and accessories to keep your vehicle running smoothly and looking sharp. Whether you're a seasoned mechanic tackling a complex repair or a weekend warrior performing routine maintenance, we have everything you need under one store.</p>
+        <p>By combining a vast product selection, diverse brand options, and valuable resources, AutoParts empowers you to maintain, repair, and personalize your vehicle with confidence. Explore our website or visit our store today and discover everything you need to get the most out of your car.</p>
+        <p>Shop with confidence at AutoParts and keep your vehicle on the road!</p>
+    </div>
+
+
+    <div class="features-container">
+        <div class="feature">
+            <img
+                src="https://meka-auto-parts-demo.myshopify.com/cdn/shop/files/Group_1000003523.svg?v=1709902680&width=1000"
+                alt="Trusted Products">
+            <h3>Trusted products</h3>
+            <p>Curated selection of trusted products for your vehicles</p>
+        </div>
+
+        <div class="feature">
+            <img
+                src="https://meka-auto-parts-demo.myshopify.com/cdn/shop/files/Group_1000003521.svg?v=1709902749&width=1000"
+                alt="After sales support">
+            <h3>After sales support</h3>
+            <p>Dedicated after-sales support team, ready to assist you</p>
+        </div>
+
+        <div class="feature">
+            <img
+                src="https://meka-auto-parts-demo.myshopify.com/cdn/shop/files/truck-fast.svg?v=1709902785&width=1000"
+                alt="Delivery across globe">
+            <h3>Delivery across globe</h3>
+            <p>Bringing quality autoparts right to your doorstep</p>
+        </div>
+
+        <div class="feature">
+            <img
+                src="https://meka-auto-parts-demo.myshopify.com/cdn/shop/files/Group_1000003527.svg?v=1709902816&width=1000"
+                alt="Quality spare parts">
+            <h3>Quality spare parts</h3>
+            <p>Top-notch spare parts crafted with precision and
+                durability</p>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-top">
+                <div class="logo">
+                    <a href="index.html"><img
+                            src="https://meka-auto-parts-demo.myshopify.com/cdn/shop/files/AUTOPARTS-logo-footer.svg?v=1698237245&width=285"
+                            alt="LOGO"></a>
+                </div>
+                <div class="social-icons">
+                    <a href="#"><i class="bi bi-facebook"></i></a>
+                    <a href="#"><i class="bi bi-instagram"></i></a>
+                    <a href="#"><i class="bi bi-twitter-x"></i></a>
+                </div>
+                <div class="newsletter">
+                    <p>Join our newsletter for new offers.</p>
+                    <div class="newsletter-signup">
+                        <input class="form-control" type="Email"
+                            placeholder="Email" aria-label="Email">
+                        <button class="btn btn-orange org" type="submit">
+                            <i class="bi bi-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="footer-links">
+                    <div class="collection">
+                        <h4>Collection</h4>
+                        <ul>
+                            <li><a href="Engine Parts.css">Engine Parts</a></li>
+                            <li><a href="Engine Tuning.html">Engine Tuning</a></li>
+                            <li><a href="Car Brakes.html">Brake System</a></li>
+                        </ul>
+                    </div>
+                    <div class="best-sellers">
+                        <h4>Best sellers</h4>
+                        <ul>
+                            <li><a href="Our Collection.html">Top new</a></li>
+                            <li><a href="Our Collection.html">Featured</a></li>
+                            <li><a href="Our Collection.html">New arrivals</a></li>
+                        </ul>
+                    </div>
+                    <div class="about-us">
+                        <h4>About us</h4>
+                        <ul>
+                            <li><a href="About.html">Our story</a></li>
+                            <li><a href="FAQ.html">FAQ</a></li>
+                            <li><a href="Terms of Service.html">Terms of service</a></li>
+                        </ul>
+                    </div>
+                    <div class="customer-service">
+                        <h4>Customer service</h4>
+                        <ul>
+                            <li><a href="Terms of Service.html">Contact us</a></li>
+                            <li><a href="Shipping & Return Policy.html">Shipping information</a></li>
+                            <li><a href="Shipping & Return Policy.html">Gifts page</a></li>
+                        </ul>
+                    </div>
+                    <div class="legal-support">
+                        <h4>Legal Support</h4>
+                        <ul>
+                            <li><a href="Terms of Service.html">Support</a></li>
+                            <li><a href="Terms of Service.html">Terms of Service</a></li>
+                            <li><a href="Delivery Policy.html">Delivery Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-top1">
+                <div class="logo">
+                    <p>This is a demo store. All images have been sourced
+                        from <br> Shutterstock and Adobe stock.</p>
+                </div>
+                <div class="visa-img">
+                    <img
+                        src="https://5.imimg.com/data5/IOS/Default/2021/1/CQ/HT/JM/26438900/product-jpeg-500x500.png"
+                        alt="visa">
+                    <img
+                        src="https://cdn.shopify.com/s/files/1/0709/7329/2817/files/mastercard.png?v=1709039360"
+                        alt="visa">
+                    <img
+                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrxd2xXZpfXEa5I7PpHBlfSdpIGapqy0EEn_EWyB4U8Hy8Orkp"
+                        alt="visa">
+                    <img
+                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwviI_oTg0dUJC_EFUzDvI3mOCf9mKIheasXy3zMZtC_y1oD-5"
+                        alt="visa">
+                </div>
+                <div class="right-section1">
+                    <div class="flag">
+                        <img src="https://flagcdn.com/us.svg" alt="USA Flag"
+                            width="20px">
+                        <select>
+                            <option>United States (USD $)</option>
+                            <option>Canada (CAD $)</option>
+                            <option>United Kingdom (GBP £)</option>
+                            <option>European Union (EUR €)</option>
+                            <option>Australia (AUD $)</option>
+                            <option>Japan (JPY ¥)</option>
+                            <option>India (INR ₹)</option>
+                            <option>Switzerland (CHF Fr)</option>
+                            <option>China (CNY ¥)</option>
+                            <option>Mexico (MXN $)</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-top2">
+                <div class="logo">
+                    <a href="Delivery Policy.html">Refund Policy</a> |
+                    <a href="Terms of Service.html">Privacy Policy</a> |
+                    <a href="Terms of Service.html">Terms of Service</a> |
+                    <a href="Terms of Service.html">Contact Information</a>
+                </div>
+
+                <div class="right-section2">
+                    <a
+                        href="https://www.linkedin.com/in/adanwaheed/">Powered
+                        by Adan Waheed</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+
+
+    <script src="Navbar.js"></script>
+        <script src="Our Collection.js"></script>
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.7.2/font/bootstrap-icons.min.css">
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+            crossorigin="anonymous"></script>
+</body>
+</html>
